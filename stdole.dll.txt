@@ -1,0 +1,569 @@
+{
+	"CanvasJS Chart Options": {
+	  "prefix": "canvasjs-chart",
+	  "body": [
+		"const chartOptions = {",
+		"  title: {",
+		"    text: \"${1:Chart Title}\",",
+		"    fontSize: ${2|12,16,20,25,30,40|},",
+		"    fontFamily: \"${3|Arial,Helvetica,Times New Roman,Calibri,Verdana|},",
+		"    fontColor: \"${4|#000000,#333333,#666666,#999999,#FF0000,#00FF00,#0000FF|}\"",
+		"  },",
+		"  animationEnabled: ${5|true,false|},",
+		"  zoomEnabled: ${6|true,false|},",
+		"  theme: \"${7|light1,light2,dark1,dark2|}\",",
+		"  data: [",
+		"    {",
+		"      type: \"${8|line,column,bar,area,spline,pie,doughnut,scatter,bubble|}\",",
+		"      dataPoints: [",
+		"        { x: ${9:1}, y: ${10:10}, label: \"${11|Point 1,Category A,Jan,Q1|}\"},",
+		"        { x: ${12:2}, y: ${13:15}, label: \"${14|Point 2,Category B,Feb,Q2|}\"},",
+		"        { x: ${15:3}, y: ${16:25}, label: \"${17|Point 3,Category C,Mar,Q3|}\"}",
+		"      ],",
+		"      showInLegend: ${18|true,false|},",
+		"      legendText: \"${19|Series 1,Data Set A,Group 1|}\"",
+		"    }",
+		"  ],",
+		"  axisX: {",
+		"    title: \"${20|X-Axis Title,Time,Category,Months|}\",",
+		"    interval: ${21|1,2,5,10|}",
+		"  },",
+		"  axisY: {",
+		"    title: \"${22|Y-Axis Title,Value,Count,Revenue|}\",",
+		"    interval: ${23|5,10,20,50|}",
+		"  }",
+		"};"
+	  ],
+	  "description": "CanvasJS chart configuration with suggestions for applicable fields"
+	},
+  
+	"Canvas Rectangle": {
+	  "prefix": "canvasRect",
+	  "body": ["ctx.fillRect(${1:x}, ${2:y}, ${3:width}, ${4:height});"],
+	  "description": "Draws a rectangle on the canvas"
+	},
+	"Canvas Arc": {
+	  "prefix": "canvasArc",
+	  "body": [
+		"ctx.arc(${1:x}, ${2:y}, ${3:radius}, ${4:startAngle}, ${5:endAngle}, ${6:false});"
+	  ],
+	  "description": "Draws an arc on the canvas"
+	},
+	"Canvas Line": {
+	  "prefix": "canvasLine",
+	  "body": [
+		"ctx.moveTo(${1:x1}, ${2:y1});",
+		"ctx.lineTo(${3:x2}, ${4:y2});",
+		"ctx.stroke();"
+	  ],
+	  "description": "Draws a line on the canvas"
+	},
+	"Canvas Path": {
+	  "prefix": "canvasPath",
+	  "body": [
+		"ctx.beginPath();",
+		"ctx.moveTo(${1:x1}, ${2:y1});",
+		"ctx.lineTo(${3:x2}, ${4:y2});",
+		"ctx.lineTo(${5:x3}, ${6:y3});",
+		"ctx.closePath();",
+		"ctx.stroke();"
+	  ],
+	  "description": "Draws a custom path on the canvas"
+	},
+	"Canvas Gradient": {
+	  "prefix": "canvasGradient",
+	  "body": [
+		"const gradient = ctx.createLinearGradient(${1:x0}, ${2:y0}, ${3:x1}, ${4:y1});",
+		"gradient.addColorStop(0, '${5:color1}');",
+		"gradient.addColorStop(1, '${6:color2}');",
+		"ctx.fillStyle = gradient;",
+		"ctx.fillRect(${7:x}, ${8:y}, ${9:width}, ${10:height});"
+	  ],
+	  "description": "Draws a gradient-filled rectangle on the canvas"
+	},
+  
+	"Canvas Pattern": {
+	  "prefix": "canvasPattern",
+	  "body": [
+		"const img = new Image();",
+		"img.src = '${1:imageURL}';",
+		"img.onload = () => {",
+		"  const pattern = ctx.createPattern(img, '${2:repeat}');",
+		"  ctx.fillStyle = pattern;",
+		"  ctx.fillRect(${3:x}, ${4:y}, ${5:width}, ${6:height});",
+		"};"
+	  ],
+	  "description": "Fills a canvas area with a pattern"
+	},
+	"Canvas Fill Text": {
+	  "prefix": "canvasFillText",
+	  "body": [
+		"ctx.font = '${1:20px Arial}';",
+		"ctx.fillText('${2:Your Text}', ${3:x}, ${4:y});"
+	  ],
+	  "description": "Draws filled text on the canvas"
+	},
+	"Canvas Stroke Text": {
+	  "prefix": "canvasStrokeText",
+	  "body": [
+		"ctx.font = '${1:20px Arial}';",
+		"ctx.strokeText('${2:Your Text}', ${3:x}, ${4:y});"
+	  ],
+	  "description": "Draws outlined text on the canvas"
+	},
+	"Canvas Shadow": {
+	  "prefix": "canvasShadow",
+	  "body": [
+		"ctx.shadowColor = '${1:#000}';",
+		"ctx.shadowBlur = ${2:10};",
+		"ctx.shadowOffsetX = ${3:5};",
+		"ctx.shadowOffsetY = ${4:5};",
+		"ctx.fillRect(${5:x}, ${6:y}, ${7:width}, ${8:height});"
+	  ],
+	  "description": "Adds shadow effects to canvas elements"
+	},
+	"Canvas Translate": {
+	  "prefix": "canvasTranslate",
+	  "body": ["ctx.translate(${1:x}, ${2:y});"],
+	  "description": "Moves the canvas origin"
+	},
+	"Canvas Rotate": {
+	  "prefix": "canvasRotate",
+	  "body": ["ctx.rotate(${1:angle} * Math.PI / 180);"],
+	  "description": "Rotates the canvas"
+	},
+	"Canvas Scale": {
+	  "prefix": "canvasScale",
+	  "body": ["ctx.scale(${1:sx}, ${2:sy});"],
+	  "description": "Scales the canvas"
+	},
+	"Canvas Save & Restore": {
+	  "prefix": "canvasSaveRestore",
+	  "body": ["ctx.save();", "// Transformations here", "ctx.restore();"],
+	  "description": "Saves and restores the canvas state"
+	},
+	"Canvas Global Alpha": {
+	  "prefix": "canvasAlpha",
+	  "body": [
+		"ctx.globalAlpha = ${1:0.5};",
+		"ctx.fillRect(${2:x}, ${3:y}, ${4:width}, ${5:height});"
+	  ],
+	  "description": "Sets the global alpha (transparency) for canvas drawing"
+	},
+	"Canvas Global Composite Operation": {
+	  "prefix": "canvasComposite",
+	  "body": [
+		"ctx.globalCompositeOperation = '${1:source-over}';",
+		"ctx.fillRect(${2:x}, ${3:y}, ${4:width}, ${5:height});"
+	  ],
+	  "description": "Sets the global composite operation for canvas"
+	},
+	"Compositing Modes": {
+	  "prefix": "canvasCompositeModes",
+	  "body": [
+		"// Available modes:",
+		"// 'source-over' | 'source-in' | 'source-out' | 'source-atop'",
+		"// 'destination-over' | 'destination-in' | 'destination-out' | 'destination-atop'",
+		"// 'lighter' | 'copy' | 'xor' | 'multiply' | 'screen' | 'overlay'",
+		"// 'darken' | 'lighten' | 'color-dodge' | 'color-burn'",
+		"// 'hard-light' | 'soft-light' | 'difference' | 'exclusion' | 'hue'",
+		"// 'saturation' | 'color' | 'luminosity'"
+	  ],
+	  "description": "List of all available canvas compositing modes"
+	},
+	"SVG Introduction": {
+	  "prefix": "svg-intro",
+	  "body": [],
+	  "description": "Placeholder for SVG intro (no code in original)"
+	},
+  
+	"SVG Basic Tag": {
+	  "prefix": "svg-basic",
+	  "body": [
+		"<svg width=\"${1:100}\" height=\"${2:100}\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  $0",
+		"</svg>"
+	  ],
+	  "description": "Basic SVG tag structure with attributes"
+	},
+  
+	"SVG Circle": {
+	  "prefix": "svg-circle",
+	  "body": [
+		"<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <circle cx=\"${1:50}\" cy=\"${2:50}\" r=\"${3:40}\" stroke=\"${4:green}\" stroke-width=\"${5:4}\" fill=\"${6:red}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG circle element with example"
+	},
+  
+	"SVG Rectangle": {
+	  "prefix": "svg-rect",
+	  "body": [
+		"<svg width=\"220\" height=\"120\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <rect x=\"${1:10}\" y=\"${2:10}\" width=\"${3:200}\" height=\"${4:100}\" stroke=\"${5:green}\" stroke-width=\"${6:6}\" fill=\"${7:blue}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG rectangle element with example"
+	},
+  
+	"SVG Ellipse": {
+	  "prefix": "svg-ellipse",
+	  "body": [
+		"<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <ellipse cx=\"${1:100}\" cy=\"${2:100}\" rx=\"${3:90}\" ry=\"${4:50}\" stroke=\"${5:black}\" stroke-width=\"${6:3}\" fill=\"${7:rgb(121,0,121)}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG ellipse element with example"
+	},
+  
+	"SVG Line": {
+	  "prefix": "svg-line",
+	  "body": [
+		"<svg width=\"250\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <line x1=\"${1:0}\" y1=\"${2:10}\" x2=\"${3:250}\" y2=\"${4:10}\" style=\"stroke:${5:red};stroke-width:${6:12}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG line element with example"
+	},
+  
+	"SVG Polygon": {
+	  "prefix": "svg-polygon",
+	  "body": [
+		"<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <polygon points=\"${1:100,10 150,190 50,190}\" style=\"fill:${2:lime};stroke:${3:purple};stroke-width:${4:3}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG polygon element with example"
+	},
+  
+	"SVG Polyline": {
+	  "prefix": "svg-polyline",
+	  "body": [
+		"<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <polyline points=\"${1:100,10 150,190 50,190}\" style=\"fill:${2:none};stroke:${3:purple};stroke-width:${4:3}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG polyline element with example"
+	},
+  
+	"SVG Path": {
+	  "prefix": "svg-path",
+	  "body": [
+		"<svg width=\"250\" height=\"250\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <path d=\"${1:M150 5 L75 200 L225 200 Z}\" style=\"fill:${2:none};stroke:${3:green};stroke-width:${4:3}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG path element with example"
+	},
+  
+	"SVG Text": {
+	  "prefix": "svg-text",
+	  "body": [
+		"<svg width=\"200\" height=\"50\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <text x=\"${1:5}\" y=\"${2:30}\" fill=\"${3:red}\" font-size=\"${4:35}\">${5:Hello SVG!}</text>",
+		"</svg>"
+	  ],
+	  "description": "SVG text element with example"
+	},
+  
+	"SVG Tspan": {
+	  "prefix": "svg-tspan",
+	  "body": [
+		"<svg width=\"200\" height=\"50\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <text x=\"${1:5}\" y=\"${2:30}\" fill=\"${3:red}\" font-size=\"${4:35}\">Hello ",
+		"    <tspan fill=\"${5:none}\" stroke=\"${6:green}\">${7:SVG}</tspan>!",
+		"  </text>",
+		"</svg>"
+	  ],
+	  "description": "SVG tspan element with example"
+	},
+  
+	"SVG TextPath": {
+	  "prefix": "svg-textpath",
+	  "body": [
+		"<svg width=\"400\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <path id=\"${1:lineAC}\" d=\"${2:M 30 180 q 150 -250 300 0}\" stroke=\"${3:blue}\" stroke-width=\"${4:2}\" fill=\"${5:none}\"/>",
+		"  <text style=\"fill: ${6:red}; font-size: ${7:25}px;\">",
+		"    <textPath href=\"#${1:lineAC}\" startOffset=\"${8:80}\">${9:Hello SVG! Hi SVG!}</textPath>",
+		"  </text>",
+		"</svg>"
+	  ],
+	  "description": "SVG textPath element with example"
+	},
+  
+	"SVG Stroke Attributes": {
+	  "prefix": "svg-stroke",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <path d=\"${1:M5 60 L121 50}\" stroke=\"${2:green}\" stroke-width=\"${3:6}\" stroke-opacity=\"${4:0.4}\" stroke-linecap=\"${5:round}\" stroke-dasharray=\"${6:10}\" stroke-linejoin=\"${7:miter}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG stroke attributes with example"
+	},
+  
+	"SVG Filters Intro": {
+	  "prefix": "svg-filters-intro",
+	  "body": [],
+	  "description": "Placeholder for SVG filters intro (no code in original)"
+	},
+  
+	"SVG Gaussian Blur": {
+	  "prefix": "svg-blur",
+	  "body": [
+		"<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <filter id=\"${1:f1}\" x=\"0\" y=\"0\">",
+		"      <feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"${2:15}\" />",
+		"    </filter>",
+		"  </defs>",
+		"  <rect width=\"${3:90}\" height=\"${4:90}\" fill=\"${5:yellow}\" filter=\"url(#${1:f1})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG Gaussian blur filter with example"
+	},
+  
+	"SVG Linear Gradient": {
+	  "prefix": "svg-linear-gradient",
+	  "body": [
+		"<svg width=\"200\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <linearGradient id=\"${1:grad1}\" x1=\"${2:0%}\" x2=\"${3:100%}\" y1=\"${4:0%}\" y2=\"${5:0%}\">",
+		"      <stop offset=\"${6:5%}\" stop-color=\"${7:yellow}\" />",
+		"      <stop offset=\"${8:100%}\" stop-color=\"${9:red}\" />",
+		"    </linearGradient>",
+		"  </defs>",
+		"  <ellipse cx=\"${10:100}\" cy=\"${11:70}\" rx=\"${12:85}\" ry=\"${13:55}\" fill=\"url(#${1:grad1})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG linear gradient with example"
+	},
+  
+	"SVG Radial Gradient": {
+	  "prefix": "svg-radial-gradient",
+	  "body": [
+		"<svg width=\"200\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <radialGradient id=\"${1:grad1}\" cx=\"${2:50%}\" cy=\"${3:50%}\" r=\"${4:50%}\">",
+		"      <stop offset=\"${5:0%}\" stop-color=\"${6:white}\" />",
+		"      <stop offset=\"${7:100%}\" stop-color=\"${8:red}\" />",
+		"    </radialGradient>",
+		"  </defs>",
+		"  <ellipse cx=\"${9:100}\" cy=\"${10:70}\" rx=\"${11:85}\" ry=\"${12:55}\" fill=\"url(#${1:grad1})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG radial gradient with example"
+	},
+  
+	"SVG Pattern Simple": {
+	  "prefix": "svg-pattern-simple",
+	  "body": [
+		"<svg width=\"400\" height=\"110\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <pattern id=\"${1:patt1}\" x=\"${2:0}\" y=\"${3:0}\" width=\"${4:20}\" height=\"${5:20}\" patternUnits=\"${6:userSpaceOnUse}\">",
+		"      <circle cx=\"${7:10}\" cy=\"${8:10}\" r=\"${9:10}\" fill=\"${10:red}\" />",
+		"    </pattern>",
+		"  </defs>",
+		"  <rect width=\"${11:200}\" height=\"${12:100}\" x=\"${13:0}\" y=\"${14:0}\" stroke=\"${15:black}\" fill=\"url(#${1:patt1})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG simple pattern with example"
+	},
+  
+	"SVG Pattern Complex": {
+	  "prefix": "svg-pattern-complex",
+	  "body": [
+		"<svg width=\"200\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <linearGradient id=\"${1:grad1}\">",
+		"      <stop offset=\"${2:0%}\" stop-color=\"${3:white}\" />",
+		"      <stop offset=\"${4:100%}\" stop-color=\"${5:red}\" />",
+		"    </linearGradient>",
+		"    <pattern id=\"${6:patt2}\" x=\"${7:0}\" y=\"${8:0}\" width=\"${9:0.25}\" height=\"${10:0.25}\">",
+		"      <rect x=\"${11:0}\" y=\"${12:0}\" width=\"${13:50}\" height=\"${14:50}\" fill=\"${15:lightblue}\" />",
+		"      <circle cx=\"${16:25}\" cy=\"${17:25}\" r=\"${18:20}\" fill=\"url(#${1:grad1})\" fill-opacity=\"${19:0.8}\" />",
+		"    </pattern>",
+		"  </defs>",
+		"  <rect width=\"${20:200}\" height=\"${21:200}\" x=\"${22:0}\" y=\"${23:0}\" stroke=\"${24:black}\" fill=\"url(#${6:patt2})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG complex pattern with gradient example"
+	},
+  
+	"SVG Transform Translate": {
+	  "prefix": "svg-translate",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <rect x=\"${1:5}\" y=\"${2:5}\" width=\"${3:40}\" height=\"${4:40}\" fill=\"${5:blue}\" />",
+		"  <rect x=\"${1:5}\" y=\"${2:5}\" width=\"${3:40}\" height=\"${4:40}\" fill=\"${6:red}\" transform=\"translate(${7:50} ${8:0})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG translate transform with example"
+	},
+  
+	"SVG Transform Scale": {
+	  "prefix": "svg-scale",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <circle cx=\"${1:25}\" cy=\"${2:25}\" r=\"${3:20}\" fill=\"${4:yellow}\" />",
+		"  <circle cx=\"${5:50}\" cy=\"${2:25}\" r=\"${3:20}\" fill=\"${6:red}\" transform=\"scale(${7:2})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG scale transform with example"
+	},
+  
+	"SVG Transform Rotate": {
+	  "prefix": "svg-rotate",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <rect x=\"${1:50}\" y=\"${2:5}\" width=\"${3:40}\" height=\"${4:40}\" fill=\"${5:blue}\" transform=\"rotate(${6:45})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG rotate transform with example"
+	},
+  
+	"SVG Transform SkewX": {
+	  "prefix": "svg-skewx",
+	  "body": [
+		"<svg width=\"200\" height=\"50\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <rect x=\"${1:5}\" y=\"${2:5}\" width=\"${3:40}\" height=\"${4:40}\" fill=\"${5:blue}\" transform=\"skewX(${6:30})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG skewX transform with example"
+	},
+  
+	"SVG Transform SkewY": {
+	  "prefix": "svg-skewy",
+	  "body": [
+		"<svg width=\"200\" height=\"50\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <rect x=\"${1:5}\" y=\"${2:5}\" width=\"${3:40}\" height=\"${4:40}\" fill=\"${5:blue}\" transform=\"skewY(${6:30})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG skewY transform with example"
+	},
+  
+	"SVG ClipPath": {
+	  "prefix": "svg-clippath",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <clipPath id=\"${1:cut-bottom}\">",
+		"      <rect x=\"${2:0}\" y=\"${3:0}\" width=\"${4:200}\" height=\"${5:50}\" />",
+		"    </clipPath>",
+		"  </defs>",
+		"  <circle cx=\"${6:100}\" cy=\"${7:100}\" r=\"${8:100}\" fill=\"${9:red}\" clip-path=\"url(#${1:cut-bottom})\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG clipPath with example"
+	},
+  
+	"SVG Mask": {
+	  "prefix": "svg-mask",
+	  "body": [
+		"<svg width=\"200\" height=\"120\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <defs>",
+		"    <mask id=\"${1:mask1}\">",
+		"      <rect x=\"${2:0}\" y=\"${3:0}\" width=\"${4:100}\" height=\"${5:50}\" fill=\"${6:white}\" />",
+		"    </mask>",
+		"  </defs>",
+		"  <rect x=\"${2:0}\" y=\"${3:0}\" width=\"${7:100}\" height=\"${8:100}\" fill=\"${9:next}\" mask=\"url(#${1:mask1})\" />",
+		"  <rect x=\"${2:0}\" y=\"${3:0}\" width=\"${7:100}\" height=\"${8:100}\" fill=\"${10:none}\" stroke=\"${11:black}\" />",
+		"</svg>"
+	  ],
+	  "description": "SVG mask with example"
+	},
+  
+	"SVG Animation Intro": {
+	  "prefix": "svg-animation-intro",
+	  "body": [],
+	  "description": "Placeholder for SVG animation intro (no code in original)"
+	},
+  
+	"SVG Set Animation": {
+	  "prefix": "svg-set",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <circle cx=\"${1:50}\" cy=\"${2:50}\" r=\"${3:25}\" style=\"fill:${4:red};\">",
+		"    <set attributeName=\"${5:r}\" to=\"${6:50}\" begin=\"${7:3s}\" />",
+		"  </circle>",
+		"</svg>"
+	  ],
+	  "description": "SVG set animation with example"
+	},
+  
+	"SVG Animate": {
+	  "prefix": "svg-animate",
+	  "body": [
+		"<svg width=\"100%\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <circle cx=\"${1:50}\" cy=\"${2:50}\" r=\"${3:50}\" style=\"fill:${4:red};\">",
+		"    <animate attributeName=\"${5:cx}\" begin=\"${6:0s}\" dur=\"${7:8s}\" from=\"${8:50}\" to=\"${9:90%}\" repeatCount=\"${10:indefinite}\" />",
+		"  </circle>",
+		"</svg>"
+	  ],
+	  "description": "SVG animate element with example"
+	},
+  
+	"SVG AnimateTransform": {
+	  "prefix": "svg-animatetransform",
+	  "body": [
+		"<svg width=\"200\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <rect x=\"${1:30}\" y=\"${2:30}\" height=\"${3:110}\" width=\"${4:110}\" style=\"stroke:${5:green};fill:${6:red}\">",
+		"    <animateTransform attributeName=\"${7:transform}\" begin=\"${8:0s}\" dur=\"${9:10s}\" type=\"${10:rotate}\" from=\"${11:0 85 85}\" to=\"${12:360 85 85}\" repeatCount=\"${13:indefinite}\" />",
+		"  </rect>",
+		"</svg>"
+	  ],
+	  "description": "SVG animateTransform with example"
+	},
+  
+	"SVG AnimateMotion": {
+	  "prefix": "svg-animatemotion",
+	  "body": [
+		"<svg width=\"300\" height=\"200\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <path id=\"${1:motionPath}\" d=\"${2:M0,0 q60,100 100,0 q60,-20 100,0}\" stroke=\"${3:blue}\" fill=\"${4:none}\" />",
+		"  <circle r=\"${5:10}\" fill=\"${6:red}\">",
+		"    <animateMotion dur=\"${7:6s}\" repeatCount=\"${8:indefinite}\" path=\"${2:M0,0 q60,100 100,0 q60,-20 100,0}\" />",
+		"  </circle>",
+		"</svg>"
+	  ],
+	  "description": "SVG animateMotion with example"
+	},
+  
+	"SVG JavaScript Change Radius": {
+	  "prefix": "svg-js-radius",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <circle id=\"${1:circle1}\" cx=\"${2:50}\" cy=\"${3:50}\" r=\"${4:25}\" style=\"fill:${5:red};\" />",
+		"</svg>",
+		"<input type=\"button\" value=\"Change Radius\" onclick=\"changeRadius()\" />",
+		"<script>",
+		"  function changeRadius() {",
+		"    document.getElementById('${1:circle1}').setAttribute('r', '${6:50}');",
+		"  }",
+		"</script>"
+	  ],
+	  "description": "SVG with JavaScript to change radius"
+	},
+  
+	"SVG JavaScript Change Style": {
+	  "prefix": "svg-js-style",
+	  "body": [
+		"<svg width=\"200\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\">",
+		"  <circle id=\"${1:circle2}\" cx=\"${2:50}\" cy=\"${3:50}\" r=\"${4:25}\" style=\"fill:${5:red};\" />",
+		"</svg>",
+		"<input type=\"button\" value=\"Change Style\" onclick=\"changeStyle()\" />",
+		"<script>",
+		"  function changeStyle() {",
+		"    document.getElementById('${1:circle2}').style.fill = '${6:green}';",
+		"  }",
+		"</script>"
+	  ],
+	  "description": "SVG with JavaScript to change style"
+	},
+  
+	"Canvas Comparison": {
+	  "prefix": "svg-canvas-compare",
+	  "body": [],
+	  "description": "Placeholder for SVG vs Canvas comparison (no code in original)"
+	}
+  }
+  
